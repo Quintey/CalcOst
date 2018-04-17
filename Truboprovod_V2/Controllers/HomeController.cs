@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using CalcLibrary;
+using ShirinaCalc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +16,7 @@ namespace Truboprovod_V2.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Calcs()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -25,6 +28,99 @@ namespace Truboprovod_V2.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+
+
+
+        [Authorize]
+        public ActionResult OstResCalc()
+        {
+            return View();
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult OstResCalc(string arg1, string Dh, string arg3, string arg4,
+                                      string arg5, string arg6, string arg7, string arg8,
+                                      string serovodorod, string Yf, string P, string R2,
+                                      string R1, string m2, string Ym, string Yn, string Ys)
+        {
+            if (ModelState.IsValid)
+            {
+
+                double result;
+                double serka = Convert.ToDouble(serovodorod);
+
+                if (serka == 1)
+                {
+                    Ys = "0";
+                }
+
+                if (!double.IsNaN(result = Math.Round(CalcLibrary.Class1.Ostatok(Convert.ToDouble(double.Parse(arg4)),
+                                                                         Convert.ToDouble(double.Parse(Yf)),
+                                                                         Convert.ToDouble(double.Parse(P)),
+                                                                         Convert.ToDouble(double.Parse(Dh)),
+                                                                         Convert.ToDouble(double.Parse(serovodorod)),
+                                                                         Convert.ToDouble(double.Parse(R2)),
+                                                                         Convert.ToDouble(double.Parse(R1)),
+                                                                         Convert.ToDouble(double.Parse(m2)),
+                                                                         Convert.ToDouble(double.Parse(Ym)),
+                                                                         Convert.ToDouble(double.Parse(Yn)),
+                                                                         Convert.ToDouble(double.Parse(Ys)),
+                                                                         Convert.ToDouble(double.Parse(arg3)),
+                                                                         Convert.ToDouble(double.Parse(arg8)),
+                                                                         Convert.ToDouble(double.Parse(arg1)),
+                                                                         Convert.ToDouble(double.Parse(arg7)),
+                                                                         Convert.ToDouble(double.Parse(arg5)),
+                                                                         Convert.ToDouble(double.Parse(arg6))), 2)))
+                {
+
+                    ViewBag.result = result;
+                }
+            }
+
+            return PartialView("PartialOstResCalc");
+        }
+
+
+
+        [Authorize]
+        public ActionResult OstResShirinaCalc()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult OstResShirinaCalc(List<double> DynamicExtraField, string Sreda, string Material,
+                                                        double Nominal_tolshina, double P, double Diametr,
+                                                                     double Rh1,double Rh2, double Narabotka)
+        {
+            //double[] a = null;
+            //string mas = "";
+            double Tsr=0;
+            int count = 0;
+            if (DynamicExtraField != null)
+            {
+                for (int i = 0; i < DynamicExtraField.Count; i++)
+                {
+                    Tsr +=  DynamicExtraField[i];
+                    count++;
+                }
+                Tsr = Tsr / count;
+                  //a = mas.Split(' ').Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => double.Parse(x)).ToArray();
+            }
+
+            if (ModelState.IsValid)
+            {
+                ViewBag.Shirinaresult =Math.Round( ShirinaCalc.Class1.OstResurs( DynamicExtraField,  Sreda,  Material,
+                                                                      Nominal_tolshina,  P,  Diametr,
+                                                                      Rh1,  Rh2,  Narabotka, count, Tsr),2);
+            }
+
+            return PartialView("PartialOstResShirinaCalc");
         }
     }
 }

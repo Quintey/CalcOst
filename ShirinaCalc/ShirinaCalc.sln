@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShirinaCalc", "ShirinaCalc\ShirinaCalc.csproj", "{D048651F-3D43-4195-B884-377451F81884}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D048651F-3D43-4195-B884-377451F81884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FAFCA37-7B31-4684-A012-8927B5E33D6C}
+	EndGlobalSection
+EndGlobal

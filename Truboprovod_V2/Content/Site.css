@@ -22,3 +22,74 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.main-func-style {
+    background: #fae8e8;
+    outline: 2px solid #000;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.res-main-func {
+    background: #fae8e8;
+    outline: 2px solid #000;
+    padding: 10px;
+    border-radius: 1px;
+}
+
+li {
+    list-style-type: none; 
+}
+
+li_int {
+    margin: 10px;
+}
+
+
+
+input[type=text]#zamer{
+   width: 68px;
+   margin: 6px;
+}
+
+.frame {
+    background: #ad91b8; /* Цвет фона */
+   border-radius: 10px;
+    padding: 10px;
+}
+
+.zamer-element {
+    border-radius: 10px;
+    padding: 0px;
+    background: #fae8e8;
+    margin-bottom: 10px;
+}
+
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    /*background-color: #f00;*/
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+footer{
+   /*background-color : black;*/
+
+}
+
+
