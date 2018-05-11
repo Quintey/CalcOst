@@ -119,26 +119,18 @@
             </ul>
         </div>
 
-        <div id="DynamicExtraFieldsContainer" class="col-md-6 frame">
+        <div  class="col-md-6 frame">
+            @Html.Label("Для точности расчета необходимо минимум 10 замеров!")
+            <div class="col-md-10" id="DynamicExtraFieldsContainer">
 
-
-            @Html.Label("tk1")
-
-            @Html.Label("tk2")
-            @Html.Label("tk3")
-            @Html.Label("tk4")
-
-            @*<div class="DynamicExtraField ">
-                    <input name="DynamicExtraField[]" value="" type="text"  id="zamer">
-                    <input name="DynamicExtraField[]" value="" type="text"  id="zamer">
-                    <input name="DynamicExtraField[]" value="" type="text"  id="zamer">
-                    <input name="DynamicExtraField[]" value="" type="text"  id="zamer">
-
-                    <input value="Удалить" type="button" class="DeleteDynamicExtraField">
-                </div>*@
-
+            </div>
+            <div class="col-md-offset-10">
+                
+                <img width="100" height="100" src="~/fonts/zamer.bmp" />
+            </div>
+            
         </div>
-        <br />
+        
         <div id="addDynamicField" class="col-md-offset-6 frame">
             <input type="button" id="addDynamicExtraFieldButton" value="Добавить замер" class="btn btn-success btn-add">
         </div>
@@ -164,10 +156,12 @@
             }).appendTo($('#DynamicExtraFieldsContainer'));
 
             // var br = $('<br />').appendTo(div);
+           
             var text = $('<input />', {
                 name: 'DynamicExtraField[]',
                 type: 'text',
-                id: 'zamer'
+                id: 'zamer',
+                hint: '1'
             }).appendTo(div);
             var text = $('<input />', {
                 name: 'DynamicExtraField[]',
