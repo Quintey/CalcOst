@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -275,6 +276,7 @@
     <Content Include="Views\Home\PartialOstResCalc.cshtml" />
     <Content Include="Views\Home\OstResShirinaCalc.cshtml" />
     <Content Include="Views\Home\PartialOstResShirinaCalc.cshtml" />
+    <Content Include="Views\Admin\Administr.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
