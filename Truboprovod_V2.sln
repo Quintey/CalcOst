@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Truboprovod_V2", "Truboprovod_V2\Truboprovod_V2.csproj", "{07E82A8E-66CE-4F48-91E8-A55BB4F55EBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcLibrary", "CalcLibrary\CalcLibrary\CalcLibrary.csproj", "{06A69902-DDBB-4D1A-A166-0306719DC57C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShirinaCalc", "ShirinaCalc\ShirinaCalc\ShirinaCalc.csproj", "{D048651F-3D43-4195-B884-377451F81884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{07E82A8E-66CE-4F48-91E8-A55BB4F55EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E82A8E-66CE-4F48-91E8-A55BB4F55EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E82A8E-66CE-4F48-91E8-A55BB4F55EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A69902-DDBB-4D1A-A166-0306719DC57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06A69902-DDBB-4D1A-A166-0306719DC57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06A69902-DDBB-4D1A-A166-0306719DC57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06A69902-DDBB-4D1A-A166-0306719DC57C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D048651F-3D43-4195-B884-377451F81884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

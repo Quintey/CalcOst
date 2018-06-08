@@ -1,47 +1,64 @@
 ﻿
 @{
-    ViewBag.Title = "OstResCalc";
+    ViewBag.Title = "Расчет";
     Layout = "~/Views/Shared/_Layout.cshtml";
     @model Truboprovod_V2.Models.OstResOtkazModel
 }
 
-<h2>OstResCalc</h2>
+<h2>Расчет остаточного ресурса по статистике отказов трубопроводов</h2>
 
 @{ List<SelectListItem> list = new List<SelectListItem>();
     list.Add(new SelectListItem() { Selected = true, Text = " ------" });
     list.Add(new SelectListItem() { Value = "222", Text = " транспортирующий сероводородсодержащие продукты" });
     list.Add(new SelectListItem() { Value = "1", Text = " транспортирующий не сероводородсодержащие продукты" });
-   }
+}
 
-@{ 
+@{
     List<SelectListItem> CategoryList = new List<SelectListItem>();
-    CategoryList.Add(new SelectListItem() { Selected = true, Value ="1", Text = " I  " });
+    CategoryList.Add(new SelectListItem() { Selected = true, Value = "1", Text = " I  " });
     CategoryList.Add(new SelectListItem() { Value = "2", Text = " II  " });
     CategoryList.Add(new SelectListItem() { Value = "3", Text = " III " });
 }
 
-@{ 
+@{
     List<SelectListItem> MaterialList = new List<SelectListItem>();
-    MaterialList.Add(new SelectListItem() { Selected = true, Value = "1", Text = "Сварные из малоперлитной и бейнитной стали контролируемой прокатки и \n"  +
-                                                                                    "термически упрочненные трубы, изготовленные двусторонней электродуговой\n " +
-                                                                                    "сваркой под флюсом по сплошному технологическому шву, с минусовым допуском\n" +
-                                                                                    " по толщине стенки не более 5% и прошедшие 100%-ный контроль на сплошность\n" +
-                                                                                    " основного металла и сварных соединений неразрушающими методами" });
-    MaterialList.Add(new SelectListItem() { Value = "2", Text = "Сварные из нормализованной, термически упрочненной стали и стали контролируемой прокатки, " +
-                                                                "изготовленные двусторонней электродуговой сваркой под флюсом по сплошному технологическому шву и " +
-                                                                "прошедшие 100%-ный контроль сварных соединений неразрушающими методами." +
-                                                                " Бесшовные из катаной или кованой заготовки, " +
-                                                                "прошедшие 100%-ный контроль неразрушающими методами  " });
-    MaterialList.Add(new SelectListItem() { Value = "3", Text = "Сварные из нормализованной и горячекатаной низколегированной стали, изготовленные двусторонней " +
-                                                                "электродуговой сваркой и прошедшие 100%-ный контроль сварных соединений неразрушающими методами " });
-    MaterialList.Add(new SelectListItem() { Value = "4", Text = "Сварные из горячекатаной низколегированной или углеродистой стали," +
-                                                               " изготовленные двусторонней электродуговой сваркой или токами высокой частоты. Остальные бесшовные трубы" });
+    MaterialList.Add(new SelectListItem()
+    {
+        Selected = true,
+        Value = "1",
+        Text = "Сварные из малоперлитной и бейнитной стали контролируемой прокатки и \n" +
+                "термически упрочненные трубы, изготовленные двусторонней электродуговой\n " +
+                "сваркой под флюсом по сплошному технологическому шву, с минусовым допуском\n" +
+                " по толщине стенки не более 5% и прошедшие 100%-ный контроль на сплошность\n" +
+                " основного металла и сварных соединений неразрушающими методами"
+    });
+    MaterialList.Add(new SelectListItem()
+    {
+        Value = "2",
+        Text = "Сварные из нормализованной, термически упрочненной стали и стали контролируемой прокатки, " +
+                "изготовленные двусторонней электродуговой сваркой под флюсом по сплошному технологическому шву и " +
+                "прошедшие 100%-ный контроль сварных соединений неразрушающими методами." +
+                " Бесшовные из катаной или кованой заготовки, " +
+                "прошедшие 100%-ный контроль неразрушающими методами  "
+    });
+    MaterialList.Add(new SelectListItem()
+    {
+        Value = "3",
+        Text = "Сварные из нормализованной и горячекатаной низколегированной стали, изготовленные двусторонней " +
+                  "электродуговой сваркой и прошедшие 100%-ный контроль сварных соединений неразрушающими методами "
+    });
+    MaterialList.Add(new SelectListItem()
+    {
+        Value = "4",
+        Text = "Сварные из горячекатаной низколегированной или углеродистой стали," +
+                " изготовленные двусторонней электродуговой сваркой или токами высокой частоты. Остальные бесшовные трубы"
+    });
 
 
 }
 
 
-            @using (Ajax.BeginForm(new AjaxOptions
+@using (Ajax.BeginForm(new AjaxOptions
 {
     HttpMethod = "post",
     InsertionMode = InsertionMode.Replace,
@@ -84,7 +101,7 @@
                     @Html.LabelFor(model => model.m2)
                 </li>
                 <li>
-                   @Html.DropDownListFor(model => model.m2, CategoryList)
+                    @Html.DropDownListFor(model => model.m2, CategoryList)
                     @Html.ValidationMessageFor(model => model.m2, "", new { @class = "text-danger" })
                 </li>
 
@@ -132,14 +149,14 @@
         <div class="col-md-offset-6">
             <ul>
                 @*<li>
-                    @Html.LabelFor(model => model.Ys)
-                </li>
-              
-                <li>
-                    @Html.EditorFor(model => model.Ys, new { htmlAttributes = new { @name = "otherField" } })
-                    @Html.ValidationMessageFor(model => model.Ys, "", new { @class = "text-danger" })
-                </li>*@
-               
+                        @Html.LabelFor(model => model.Ys)
+                    </li>
+
+                    <li>
+                        @Html.EditorFor(model => model.Ys, new { htmlAttributes = new { @name = "otherField" } })
+                        @Html.ValidationMessageFor(model => model.Ys, "", new { @class = "text-danger" })
+                    </li>*@
+
                 <li>
                     @Html.LabelFor(model => model.Yn)
                 </li>
@@ -147,15 +164,15 @@
                     @Html.EditorFor(model => model.Yn)
                     @Html.ValidationMessageFor(model => model.Yn, "", new { @class = "text-danger" })
                 </li>
-                
+
                 <li>
                     @Html.LabelFor(model => model.Harakterisika)
                 </li>
                 <li>
-                    @Html.DropDownListFor(model => model.Harakterisika,MaterialList )
+                    @Html.DropDownListFor(model => model.Harakterisika, MaterialList)
                     @Html.ValidationMessageFor(model => model.Harakterisika, "", new { @class = "text-danger" })
                 </li>
-               
+
                 <li>
                     @Html.LabelFor(model => model.Prognoz)
                 </li>
@@ -163,7 +180,7 @@
                     @Html.EditorFor(model => model.Prognoz)
                     @Html.ValidationMessageFor(model => model.Prognoz, "", new { @class = "text-danger" })
                 </li>
-              
+
                 <li>
                     @Html.LabelFor(model => model.TolshinaStenki)
                 </li>
@@ -171,7 +188,7 @@
                     @Html.EditorFor(model => model.TolshinaStenki)
                     @Html.ValidationMessageFor(model => model.TolshinaStenki, "", new { @class = "text-danger" })
                 </li>
-               
+
                 <li>
                     @Html.LabelFor(model => model.Narabotka)
                 </li>
@@ -179,7 +196,7 @@
                     @Html.EditorFor(model => model.Narabotka)
                     @Html.ValidationMessageFor(model => model.Narabotka, "", new { @class = "text-danger" })
                 </li>
-               
+
                 <li>
                     @Html.LabelFor(model => model.Elements)
                 </li>
@@ -187,7 +204,7 @@
                     @Html.EditorFor(model => model.Elements)
                     @Html.ValidationMessageFor(model => model.Elements, "", new { @class = "text-danger" })
                 </li>
-                
+
                 <li>
                     @Html.LabelFor(model => model.Dlinna)
                 </li>
@@ -195,7 +212,7 @@
                     @Html.EditorFor(model => model.Dlinna)
                     @Html.ValidationMessageFor(model => model.Dlinna, "", new { @class = "text-danger" })
                 </li>
-               
+
                 <li>
                     @Html.LabelFor(model => model.BrokenEl)
                 </li>
@@ -210,50 +227,10 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @section Scripts {
 
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
-
-
-    @*<script>
-
-            $(document).ready(function () {
-                $.viewInput = {
-                    '0': $([]),
-                    //Это имя DIV вокруг невидимого поля
-                    '222': $('#222'),
-                };
-
-                $.each($.viewInput, function () { this.hide(); });
-
-                $('#otherFieldOption').change(function () {
-                    // Прячет это поле, если выбрана другая опция
-                    $.each($.viewInput, function () { this.hide(); });
-                    // Показывает поле при выборе необходимой опции
-                    $.viewInput[$(this).val()].show();
-                });
-
-            });
-
-        </script>*@
-
 
 
     <script>

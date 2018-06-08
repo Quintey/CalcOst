@@ -24,17 +24,19 @@ textarea {
 }
 
 .main-func-style {
-    background: #fae8e8;
-    outline: 2px solid #000;
+    
+    /*background: #fae8e8;*/
+    background-color: rgba(169, 210, 214, 0.7);
+    
     padding: 10px;
     border-radius: 10px;
 }
 
 .res-main-func {
-    background: #fae8e8;
-    outline: 2px solid #000;
+    background-color: rgba(169, 210, 214, 0.7);
+   
     padding: 10px;
-    border-radius: 1px;
+    border-radius: 10px;
 }
 
 li {
@@ -53,15 +55,15 @@ input[type=text]#zamer{
 }
 
 .frame {
-    background: #ad91b8; /* Цвет фона */
-   border-radius: 10px;
+    background-color: rgba(89, 82, 222, 1);
+    border-radius: 10px;
     padding: 10px;
 }
 
 .zamer-element {
     border-radius: 10px;
     padding: 0px;
-    background: #fae8e8;
+    background-color: rgba(169, 210, 214, 0.7);
     margin-bottom: 10px;
 }
 
@@ -87,9 +89,8 @@ input[type=text]#zamer{
     display: none;
 }
 
-footer{
-   /*background-color : black;*/
 
+
+.body-background {
+    background-image: url('../fonts/GettyImages-586922442.jpg');
 }
-
-

@@ -14,25 +14,13 @@ namespace ShirinaCalc
         /// </summary>
         public static double  m1 = 0.8;
 
-
-        /// <summary>
-        /// коэффициент условий работы трубопровода, величина которого
-        /// принимается в зависимости от транспортируемой среды: для токсичных,
-        /// горючих, взрывоопасных и сжиженных газов - 0,6; для инертных газов (азот,
-        /// воздух и т.п.) или токсичных, горючих, взрывоопасных жидкостей - 0,75;
-        /// для инертных жидкостей - 0,9;
-        /// </summary>
-        public static double[] Koefs_m2 = new double[3] {  0.6 ,   0.75 ,    0.90 };
-
-
         /// <summary>
         /// коэффициент условий работы материала труб при повышенных
         /// температурах, для условий работы промысловых трубопроводов
         /// принимается равным 1;
         /// </summary>
+        
         public static double m3 = 1;
-
-
         /// <summary>
         /// коэффициент однородности материала труб: для бесшовных труб из
         /// углеродистой и для сварных труб из низколегированной ненормализованной
@@ -41,8 +29,7 @@ namespace ShirinaCalc
         /// </summary>
         public static double[] k1 = new double[ 2] {0.8 ,  0.85 };
 
-
-        /// <summary>
+                /// <summary>
         /// R1 - расчетное сопротивление материала труб и деталей трубопроводов, Па
         ///// </summary>
         //public static double RasSopr(double Rh1, double m1,double m2, double k1)
@@ -50,7 +37,6 @@ namespace ShirinaCalc
         //    double val = Rh1 * m1 * m2 * k1;
         //    return  val;
         //} 
-
 
         public static double SrOtkl(double Tsr, int count, List<double> DynamicExtraField)
         {
@@ -65,36 +51,16 @@ namespace ShirinaCalc
            return  Math.Sqrt(sum / (count - 1));
         }
 
-
-
-
-
         public static double Tmin(double Tsr, int count, List<double> DynamicExtraField)
         {
             return Tsr - 2 * SrOtkl(Tsr, count,DynamicExtraField);
         }
-
-
-
-
-        public static double Totbr(double Rh1, double Rh2 ,double P, double Dh, string Sreda, string Material)
+        
+        public static double Totbr(double Rh1, double Rh2 ,double P, double Dh, double Sreda_double, string Material)
         {
-            double val_m2 = 0;
+           
             double val_k1 = 0;
-
-            switch (Sreda)
-            {
-                case  "1":
-                    val_m2 = Koefs_m2[0];
-                    break;
-                case "2":
-                    val_m2 = Koefs_m2[1];
-                    break;
-                case "3":
-                    val_m2 = Koefs_m2[2];
-                    break;
-            }
-
+            
             switch (Material)
             {
                 case "1":
@@ -107,11 +73,11 @@ namespace ShirinaCalc
                 
             }
             double R1 = 0;
-            double check = (Rh2 * m3) / (Rh1 * val_m2);
+            double check = (Rh2 * m3) / (Rh1 * Sreda_double);
 
             if (check >= 0.75)
             {
-                R1 = (Rh1 * m1 * val_m2 * val_k1);
+                R1 = (Rh1 * m1 * Sreda_double * val_k1);
                 return ((1.2 * P * 1 * Dh) / (2 * (R1 + 1.2 * P)))*1000;
             }
             else
@@ -134,11 +100,11 @@ namespace ShirinaCalc
         /// вероятной толщине стенки труб по
         /// результатам диагностики
         /// </summary>
-        public static double OstResurs(List<double> DynamicExtraField, string Sreda, string Material,
+        public static double OstResurs(List<double> DynamicExtraField, double Sreda_double, string Material,
                                                         double Nominal_tolshina, double P, double Diametr,
                                                                      double Rh1, double Rh2, double Narabotka, int count, double Tsr )
         {
-            return  (Tmin(Tsr,count,DynamicExtraField)-Totbr(Rh1,Rh2,P,Diametr,Sreda,Material)) / 
+            return  (Tmin(Tsr,count,DynamicExtraField)-Totbr(Rh1,Rh2,P,Diametr, Sreda_double, Material)) / 
                                         SrSkorostKorozii(Nominal_tolshina,Narabotka,Tsr,count,DynamicExtraField);
         }
 

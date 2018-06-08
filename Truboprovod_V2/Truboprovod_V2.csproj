@@ -50,11 +50,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DIPLOM\Truboprovod\Truboprovod\bin\CalcLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="ShirinaCalc">
+    <Reference Include="MvcRazorToPdf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcRazorToPdf.1.0.2\lib\40\MvcRazorToPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="ShirinaCalc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ShirinaCalc\ShirinaCalc\bin\Debug\ShirinaCalc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -206,9 +216,12 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitilializer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KoefsContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OstResOtkazModel.cs" />
     <Compile Include="Models\OstResShirinaModel.cs" />
+    <Compile Include="Models\Soprotivleniya.cs" />
+    <Compile Include="Models\Usloviya_neSer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -216,7 +229,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\GettyImages-586922442.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\j73zeo5bptto.png" />
     <Content Include="fonts\zamer.bmp" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -277,9 +292,12 @@
     <Content Include="Views\Home\OstResShirinaCalc.cshtml" />
     <Content Include="Views\Home\PartialOstResShirinaCalc.cshtml" />
     <Content Include="Views\Admin\Administr.cshtml" />
+    <Content Include="Views\Shared\_PdfLayout.cshtml" />
+    <Content Include="Views\Admin\AdministrPdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Pdf\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -34,14 +34,7 @@ namespace CalcLibrary
                                                              { 3 , 1.47 },
                                                              { 4 , 1.55 }};
 
-
-
-
-
-
-
-
-
+        
 
         // таблица квантилей 
         public static double[,] KvantilTable = new double[31, 2] {{ 0.75, 0.67 },
@@ -81,35 +74,27 @@ namespace CalcLibrary
         // функция интерполяции 
         public static double Interpolacia(double fX1, double fX2, double X1, double X2, double U)
         {
-
             return fX1 + (fX2 - fX1) * (U - X1) / (X2 - X1);
-
         }
 
-
         
-
         public static double Kvantil_Uq(double r, double delta, double L)
         {
 
             double a = 1 - ((r + 1) / (L / delta));
-
             bool check = false;
             double Result = 0;
             double previosElement, nextElement;
 
             for (int i = 0; i < 31; i++)
             {
-
                 if (KvantilTable[i, 0] == (a))
                 {
                     Result = KvantilTable[i, 1];
 
                     check = true;
                     break;
-
                 }
-
             }
 
 
@@ -127,37 +112,25 @@ namespace CalcLibrary
                     }
                 }
             }
-
-
             return Result;
-
         }
 
-
-
         
-
         public static double Kvantil_Uy(double Veroyatnost, double r, double delta, double L)
         {
-
             double Uy = (0.01 * Veroyatnost) * (1 - ((r + 1) / (L / delta)));
-
             bool check = false;
             double Result = 0;
             double previosElement, nextElement;
 
             for (int i = 0; i < 31; i++)
             {
-
                 if (KvantilTable[i, 0] == (Uy))
                 {
                     Result = KvantilTable[i, 1];
-
                     check = true;
                     break;
-
                 }
-
             }
 
 
@@ -177,20 +150,15 @@ namespace CalcLibrary
             }
 
             return Result;
-
         }
 
-
         
-
-
         public static double dopustIsnosStenki(double Yf,double P,double Dh, double caseR, double R2, double R1, double m2, double Ym, double Yn, double Ys,double Tn)
         {
             double R = 0;
             double res;
             switch (caseR)
             {
-
                 case 222:
                     R = (R2 * Ys) / Yn;
                     break;
@@ -202,22 +170,14 @@ namespace CalcLibrary
 
             res = 1 - (1000*(((Yf * P * Dh) / (2 * (R + (0.6 * Yf * P)))) / Tn));
            return res;
-
         }
 
-
-
-
+        
         public static double sredniiDopustIznosStenki(double Vcp, double Td, double Tn)
         {
-
             return ((Vcp / Tn) * Td);
-
         }
-
-
-
-
+        
 
         // фунция расчета остаточного ресурса трубопровода
         public static double Ostatok(double Td, double Yf, double P, double Dh, double caseR,
@@ -225,8 +185,6 @@ namespace CalcLibrary
                                      double Ys, double Tn, double Vcp,  double Veroyatnost,
                                      double r, double delta, double L)
         {
-
-
             double Ostatok = Td * ((dopustIsnosStenki( Yf, P, Dh, caseR, R2, R1, m2, Ym, Yn, Ys, Tn) - sredniiDopustIznosStenki(Vcp, Td, Tn)) / (dopustIsnosStenki(Yf, P, Dh, caseR, R2, R1, m2, Ym, Yn, Ys, Tn) / ((Kvantil_Uq( r, delta, L) / (Kvantil_Uy(Veroyatnost, r, delta, L)) - 1)) + sredniiDopustIznosStenki(Vcp, Td, Tn)));
 
             return Ostatok;

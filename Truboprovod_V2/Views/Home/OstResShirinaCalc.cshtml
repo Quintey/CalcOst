@@ -7,9 +7,9 @@
 
 @{
     List<SelectListItem> Sredalist = new List<SelectListItem>();
-    Sredalist.Add(new SelectListItem() { Selected = true, Value = "1", Text = "Токсичные, горючие, взрывоопасные и сжиженные газы" });
-    Sredalist.Add(new SelectListItem() { Value = "2", Text = "инертные газы или токсичные, горючие, взрывоопасные жидкости" });
-    Sredalist.Add(new SelectListItem() { Value = "3", Text = "инертные жидкости" });
+    Sredalist.Add(new SelectListItem() { Selected = true, Value = "I", Text = "Токсичные, горючие, взрывоопасные и сжиженные газы" });
+    Sredalist.Add(new SelectListItem() { Value = "II", Text = "инертные газы или токсичные, горючие, взрывоопасные жидкости" });
+    Sredalist.Add(new SelectListItem() { Value = "III", Text = "инертные жидкости" });
 }
 
 @{ 
@@ -21,7 +21,21 @@
 
 }
 
-<h2>OstResShirinaCalc</h2>
+@{ 
+    List<SelectListItem> SteelList = new List<SelectListItem>();
+    SteelList.Add(new SelectListItem() { Selected = true, Value = "10", Text = "10" });
+    SteelList.Add(new SelectListItem() {  Value = "20", Text = "20" });
+    SteelList.Add(new SelectListItem() {  Value = "35", Text = "35" });
+    SteelList.Add(new SelectListItem() {  Value = "45", Text = "45" });
+    SteelList.Add(new SelectListItem() {  Value = "10Г2", Text = "10Г2" });
+    SteelList.Add(new SelectListItem() {  Value = "15ХМ", Text = "15ХМ" });
+    SteelList.Add(new SelectListItem() {  Value = "30ХМА", Text = "30ХМА" });
+    SteelList.Add(new SelectListItem() {  Value = "12ХН2", Text = "12ХН2" });
+    SteelList.Add(new SelectListItem() {  Value = "Ст4сп", Text = "Ст4сп" });
+    SteelList.Add(new SelectListItem() {  Value = "Ст5сп", Text = "Ст5сп" });
+}
+
+<h2>Расчёт остаточного ресурса трубопровода по минимальной вероятной толщине стенки труб по результатам диагностики</h2>
 
 
 
@@ -69,6 +83,15 @@
                 </li>
 
                 <li>
+                    @Html.LabelFor(model => model.Steel)
+                </li>
+                <li>
+                    @Html.DropDownListFor(model => model.Steel, SteelList)
+                    @Html.ValidationMessageFor(model => model.Steel)
+                </li>
+
+
+                <li>
                     @Html.LabelFor(model => model.P)
                 </li>
                 <li>
@@ -93,22 +116,7 @@
                 </li>
 
 
-                <li>
-                    @Html.LabelFor(model => model.Rh1)
-                </li>
-                <li>
-                    @Html.EditorFor(model => model.Rh1)
-                    @Html.ValidationMessageFor(m => m.Rh1)
-                </li>
 
-
-                <li>
-                    @Html.LabelFor(model => model.Rh2)
-                </li>
-                <li>
-                    @Html.EditorFor(model => model.Rh2)
-                    @Html.ValidationMessageFor(m => m.Rh2)
-                </li>
                 <li>
                     @Html.LabelFor(model => model.Narabotka)
                 </li>
