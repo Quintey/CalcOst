@@ -13,7 +13,10 @@ namespace Truboprovod_V2
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
-
+            bundles.Add(new ScriptBundle("~/Bundles/jqGird")
+                .Include("~/Scripts/jquery.jqGrid.min.js")
+                .Include("~/Scripts/i18n/grid.locale-ru.js")
+            );
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // готово к выпуску, используйте средство сборки по адресу https://modernizr.com, чтобы выбрать только необходимые тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

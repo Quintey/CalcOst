@@ -7,16 +7,21 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+ 
+    
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
     <style>
         body {
             background: url('../../fonts/GettyImages-586922442.jpg') no-repeat;
-            background-size: 100%; 
+            background-size: 100%;
         }
     </style>
 </head>
 
-<body  >
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -26,7 +31,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }).ToHtmlString().Replace("[replacetext]", "<img src =\"/fonts/j73zeo5bptto.png\" />"))
-               
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -38,10 +43,10 @@
                     }
                     @*  <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>*@
                     @if (User.IsInRole("admin"))
-                        {
-                    <li>
-                        @Html.ActionLink("Администрирование","Administr","Admin")
-                    </li>
+                    {
+                        <li>
+                            @Html.ActionLink("Администрирование", "Administr", "Admin")
+                        </li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -50,12 +55,14 @@
     </div>
     <div class="container body-content ">
         @RenderBody()
-       
+
         <footer id="footer" class=" footer navbar-fixed-bottom">
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>
     <link href="~/Content/Site.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
