@@ -1,4 +1,37 @@
 ﻿@{
-    ViewBag.Title = "OstCalc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Главная страница";
 }
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class=" main-func-style">
+    <div>
+
+        <p>
+            <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("OstResCalc", "Home", new { ParentId = 1 })'"><h2>Расчет остаточного ресурса по статистике отказов трубопроводов </h2></button>
+        </p>
+
+        <p>
+            <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("OstResShirinaCalc", "Home")'"><h2>Расчёт остаточного ресурса трубопровода по<br /> минимальной вероятной толщине стенки труб <br />по результатам диагностики</h2></button>
+        </p>
+
+        <p>
+            <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("index", "Home")'"><h2>asd</h2></button>
+        </p>
+
+    </div>
+
+
+</div>
+
 
