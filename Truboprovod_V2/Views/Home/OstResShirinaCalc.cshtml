@@ -15,9 +15,9 @@
 @{
     List<SelectListItem> Material = new List<SelectListItem>();
     Material.Add(new SelectListItem() { Selected = true, Value = "1", Text = "Бесшовные трубы из углеродистой стали" });
-    Material.Add(new SelectListItem() { Selected = true, Value = "2", Text = "Сварные трубы из углеродистой стали" });
-    Material.Add(new SelectListItem() { Selected = true, Value = "1", Text = "Сварные трубы из низколегированной ненормализованной стали" });
-    Material.Add(new SelectListItem() { Selected = true, Value = "2", Text = "Сварных трубы из нормализованной низколегированной стали" });
+    Material.Add(new SelectListItem() { Value = "2", Text = "Сварные трубы из углеродистой стали" });
+    Material.Add(new SelectListItem() { Value = "1", Text = "Сварные трубы из низколегированной ненормализованной стали" });
+    Material.Add(new SelectListItem() { Value = "2", Text = "Сварных трубы из нормализованной низколегированной стали" });
 
 }
 
@@ -39,14 +39,7 @@
 
 
 
-@using (Ajax.BeginForm(new AjaxOptions
-{
-
-    HttpMethod = "post",
-    InsertionMode = InsertionMode.Replace,
-    UpdateTargetId = "ResultConteiner"
-
-}))
+@using (Html.BeginForm())
 {
     <div class="row res-main-func">
         <div class="col-md-2  ">
@@ -56,9 +49,11 @@
                 </li>
                 <li>
                     @Html.Raw(@Html.ActionLink("[replacetext]", "ToShirinaPdf", "Pdf", new { area = "" }).ToHtmlString().Replace("[replacetext]", "<img src =\"/fonts/document-print.png\"/>"))
+                </li>
+                
             </ul>
         </div>
-        <div id="ResultConteiner" class=" col-md-4">
+        <div class=" col-md-4">
             @Html.LabelFor(model => model.OstResult, htmlAttributes: new { @class = " col-md-4 " })
             <input type="text" value="@ViewBag.Shirinaresult " readonly />
         </div>

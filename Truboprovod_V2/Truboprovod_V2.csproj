@@ -296,6 +296,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OstResOtkazModel.cs" />
     <Compile Include="Models\OstResShirinaModel.cs" />
+    <Compile Include="Models\OstResShirinaContext.cs" />
     <Compile Include="Models\Soprotivleniya.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Usloviya_neSer.cs" />
@@ -498,6 +499,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Admin\AdministrShirinaResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

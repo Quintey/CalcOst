@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -19,18 +20,6 @@ namespace Truboprovod_V2.Models
         [Required(ErrorMessage = "Поле должно быть установлено.")]
         [Display(Name = "рабочее давление в трубопроводе(Па) - ")]
         public double P { get; set; }
-
-
-        //[RegularExpression(@"^[0-9,]+$", ErrorMessage = "Необходимо число или используется точка вместо запятой.")]
-        //[Required(ErrorMessage = "Поле должно быть установлено.")]
-        //[Display(Name = "нормативное сопротивление, равное наименьшему значению временного сопротивления разрыву материала труб - ")]
-        //public double Rh1 { get; set; }
-
-
-        //[RegularExpression(@"^[0-9,]+$", ErrorMessage = "Необходимо число или используется точка вместо запятой.")]
-        //[Required(ErrorMessage = "Поле должно быть установлено.")]
-        //[Display(Name = " нормативное сопротивление, равное наименьшему значению предела текучести при растяжении, сжатии и изгибе материала труб - ")]
-        //public double Rh2 { get; set; }
 
 
         /// <summary>
@@ -59,12 +48,21 @@ namespace Truboprovod_V2.Models
         /// </summary>
         [Required(ErrorMessage = "Поле должно быть установлено.")]
         [Display(Name = "Номинальная толщина стенки(мм) - ")]
-        public string Nominal_tolshina { get; set; }
+        public double Nominal_tolshina { get; set; }
 
 
-        [Required(ErrorMessage = "Поле должно быть установлено.")]
+       [Required(ErrorMessage = "Поле должно быть установлено.")]
         [Display(Name = "Марка стали - ")]
         public string Steel { get; set; }
+
+        public int Rh1 { get; set; }
+        public int Rh2 { get; set; }
+        public string UserName { get; set; }
+
+        public string Date { get; set; }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
     }
 }

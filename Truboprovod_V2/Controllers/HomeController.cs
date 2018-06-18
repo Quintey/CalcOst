@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using Truboprovod_V2.Models;
 
 namespace Truboprovod_V2.Controllers
 {
@@ -30,8 +32,6 @@ namespace Truboprovod_V2.Controllers
 
             return View();
         }
-
-
 
 
         [Authorize]
@@ -92,23 +92,24 @@ namespace Truboprovod_V2.Controllers
         {
             return View();
         }
+        OstResShirinaContext context = new OstResShirinaContext();
 
         [Authorize]
         [HttpPost]
-        public ActionResult OstResShirinaCalc(List<double> DynamicExtraField, string Sreda, string Material,  double Nominal_tolshina,
-                                                                            double P, double Diametr, string Steel,  double Narabotka)
+        public ActionResult OstResShirinaCalc(List<double> DynamicExtraField, string Sreda, string Material, double Nominal_tolshina,
+                                                                            double P, double Diametr, string Steel, double Narabotka)
         {
-            int Rh1=0 ;
-            int Rh2=0 ;
-            double Sreda_double=0;
-            double Tsr=0;
+            int Rh1 = 0;
+            int Rh2 = 0;
+            double Sreda_double = 0;
+            double Tsr = 0;
             int count = 0;
-            
+
             if (DynamicExtraField != null)
             {
                 for (int i = 0; i < DynamicExtraField.Count; i++)
                 {
-                    Tsr +=  DynamicExtraField[i];
+                    Tsr += DynamicExtraField[i];
                     count++;
                 }
                 Tsr = Tsr / count;
@@ -117,32 +118,66 @@ namespace Truboprovod_V2.Controllers
             string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Truboprovod_V2-20180323015837.mdf;Initial Catalog=aspnet-Truboprovod_V2-20180323015837;Integrated Security=True;MultipleActiveResultSets=True";
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
-            string sqslComm = "SELECT R1, R2 FROM [Soprotivleniyas] WHERE Mark='" + Steel + "'";
-            SqlCommand comm = new SqlCommand(sqslComm, connect);
-            connect.Open();
-            SqlDataReader read = comm.ExecuteReader();
-            while (read.Read())
-            {
-                 Rh1 = (int)read["R1"];
-                 Rh2 = (int)read["R2"];
+                string sqslComm = "SELECT R1, R2 FROM [Soprotivleniyas] WHERE Mark='" + Steel + "'";
+                SqlCommand comm = new SqlCommand(sqslComm, connect);
+                connect.Open();
+                SqlDataReader read = comm.ExecuteReader();
+                while (read.Read())
+                {
+                    Rh1 = (int)read["R1"];
+                    Rh2 = (int)read["R2"];
+                }
+                sqslComm = "SELECT koef_m2 FROM [Usloviya_neSer] WHERE Category='" + Sreda + "'";
+                comm = new SqlCommand(sqslComm, connect);
+                read = comm.ExecuteReader();
+                while (read.Read())
+                {
+                    Sreda_double = (double)read["koef_m2"];
+                }
+                connect.Close();
             }
-            sqslComm = "SELECT koef_m2 FROM [Usloviya_neSer] WHERE Category='" + Sreda + "'";
-            comm = new SqlCommand(sqslComm, connect);
-            read = comm.ExecuteReader();
-            while (read.Read())
-            {
-                Sreda_double = (double)read["koef_m2"];
-            }
-            connect.Close();
-        }
 
             if (ModelState.IsValid)
             {
-                ViewBag.Shirinaresult =Math.Round( ShirinaCalc.Class1.OstResurs( DynamicExtraField,Sreda_double,Material,Nominal_tolshina, 
-                                                                                          P,Diametr,Rh1,Rh2,Narabotka,count,Tsr),2);
-            }
+                ViewBag.Shirinaresult = Math.Round(ShirinaCalc.Class1.OstResurs(DynamicExtraField, Sreda_double, Material, Nominal_tolshina,
+                                                                                          P, Diametr, Rh1, Rh2, Narabotka, count, Tsr), 2);
 
-            return PartialView("PartialOstResShirinaCalc");
+                double Result = ViewBag.Shirinaresult;
+
+                var claimsIdentity = User.Identity as ClaimsIdentity;
+
+                if (claimsIdentity != null)
+                {
+                    var userIdClaim = claimsIdentity.Claims
+                        .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                    if (userIdClaim != null)
+                    {
+                        var userIdValue = userIdClaim.Value;
+                        ViewBag.UserName = User.Identity.Name;
+                    }
+                    
+                    OstResShirinaModel res = new OstResShirinaModel
+                    {
+                        UserName = User.Identity.Name,
+                        Date = DateTime.Now.ToString(),
+                        Sreda = (Sreda_double).ToString(),
+                        Material = Material,
+                        Nominal_tolshina = Nominal_tolshina,
+                        P = P,
+                        Diametr = Diametr,
+                        Rh1 = Rh1,
+                        Rh2 = Rh2,
+                        Narabotka = Narabotka,
+                        Steel = Steel,
+                        OstResult = Result.ToString()
+                    };
+
+                    context.ShirinaRes.Add(res);
+                    context.SaveChanges();
+                }
+            }
+            return View();
         }
     }
 }

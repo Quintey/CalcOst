@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<Truboprovod_V2.Models.OstResShirinaModel>
+
+
+@{
+    ViewBag.Title = "Админка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table border="1">
+
+    <thead>
+        <tr>
+            <td class="col-md-4">Пользователь</td>
+            <td class="col-md-4">Результат</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+            <td class="col-md-4">Дата</td>
+        </tr>
+    </thead>
+
+    @foreach (Truboprovod_V2.Models.OstResShirinaModel b in Model)
+    {
+        <tr>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Id) </td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.UserName) </td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Diametr)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Material)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Narabotka)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Nominal_tolshina)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.P)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Rh1)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Rh2)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Sreda)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Steel)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.OstResult)</td>
+            <td class="col-md-4"> @Html.DisplayFor(OstResShirinaModel => b.Date)</td>
+
+        </tr>
+    }
+</table>

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+
 @{
     ViewBag.Title = "Админка";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,19 +15,19 @@
     <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" type="text/css" />
 }
-    <style>
-        body {
-            background-color: #f0f0ffa;
-        }
+<style>
+    body {
+        background-color: #f0f0ffa;
+    }
 
-        .ui-jqgrid .ui-pg-input {
-            height: 20px;
-        }
+    .ui-jqgrid .ui-pg-input {
+        height: 20px;
+    }
 
-        .ui-jqgrid .ui-jqgrid-pager {
-            height: 50px;
-        }
-    </style>
+    .ui-jqgrid .ui-jqgrid-pager {
+        height: 50px;
+    }
+</style>
 <script type="text/javascript">
     $(document).ready(function () {
     $("#jqg").jqGrid({
@@ -42,7 +43,7 @@
             { name: 'PhoneNumber', index: 'PhoneNumber', width: 150, sortable: true},
             { name: 'PhoneNumberConfirmed', index: 'PhoneNumberConfirmed', width: 80, sortable: true},
             { name: 'TwoFactorEnabled', index: 'TwoFactorEnabled', width: 80, sortable: true},
-       
+
         ],
         rowNum: 10, // число отображаемых строк
         loadonce:true, // загрузка только один раз
@@ -106,9 +107,12 @@
 
 <center><h1>Панель админиcтратора</h1></center>
 <div>
-  <center><table id="jqg"></table></center> 
- <center><div id="jpager"></div></center> 
+    <center><table id="jqg"></table></center>
+    <center><div id="jpager"></div></center>
 </div>
 
+
+
+@Html.ActionLink("Резульаты ширины", "AdministrShirinaResult", "Admin")
 
 
