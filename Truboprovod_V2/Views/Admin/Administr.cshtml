@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Админка";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 @section Scripts {
 
@@ -104,15 +104,5 @@
     };
 });
 </script>
-
-<center><h1>Панель админиcтратора</h1></center>
-<div>
-    <center><table id="jqg"></table></center>
-    <center><div id="jpager"></div></center>
-</div>
-
-
-
-@Html.ActionLink("Резульаты ширины", "AdministrShirinaResult", "Admin")
 
 

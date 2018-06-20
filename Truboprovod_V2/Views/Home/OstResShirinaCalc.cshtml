@@ -16,8 +16,8 @@
     List<SelectListItem> Material = new List<SelectListItem>();
     Material.Add(new SelectListItem() { Selected = true, Value = "1", Text = "Бесшовные трубы из углеродистой стали" });
     Material.Add(new SelectListItem() { Value = "2", Text = "Сварные трубы из углеродистой стали" });
-    Material.Add(new SelectListItem() { Value = "1", Text = "Сварные трубы из низколегированной ненормализованной стали" });
-    Material.Add(new SelectListItem() { Value = "2", Text = "Сварных трубы из нормализованной низколегированной стали" });
+    Material.Add(new SelectListItem() { Value = "3", Text = "Сварные трубы из низколегированной ненормализованной стали" });
+    Material.Add(new SelectListItem() { Value = "4", Text = "Сварных трубы из нормализованной низколегированной стали" });
 
 }
 
@@ -43,19 +43,13 @@
 {
     <div class="row res-main-func">
         <div class="col-md-2  ">
-            <ul>
-                <li>
                     <input type="submit" value="Считать" class="btn btn-default" />
-                </li>
-                <li>
-                    @Html.Raw(@Html.ActionLink("[replacetext]", "ToShirinaPdf", "Pdf", new { area = "" }).ToHtmlString().Replace("[replacetext]", "<img src =\"/fonts/document-print.png\"/>"))
-                </li>
-                
-            </ul>
         </div>
         <div class=" col-md-4">
             @Html.LabelFor(model => model.OstResult, htmlAttributes: new { @class = " col-md-4 " })
             <input type="text" value="@ViewBag.Shirinaresult " readonly />
+            @Html.Raw(@Html.ActionLink("[replacetext]", "ToShirinaPdfRotativa", "Home", new { area = "" }).ToHtmlString().Replace("[replacetext]", "<img src =\"/fonts/document-print.png\"/>"))
+
         </div>
 
     </div>

@@ -14,24 +14,32 @@
 <br />
 <br />
 
-<div class=" main-func-style">
-    <div>
+<style>
 
-        <p>
-            <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("OstResCalc", "Home", new { ParentId = 1 })'"><h2>Расчет остаточного ресурса по статистике отказов трубопроводов </h2></button>
-        </p>
+    .text-bar-menu {
+        word-wrap: break-word;
+    }
 
-        <p>
-            <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("OstResShirinaCalc", "Home")'"><h2>Расчёт остаточного ресурса трубопровода по<br /> минимальной вероятной толщине стенки труб <br />по результатам диагностики</h2></button>
-        </p>
+</style>
 
-        <p>
-            <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("index", "Home")'"><h2>asd</h2></button>
-        </p>
-
+<div class="  ">
+    <div class="text-bar-menu">
+        <div>
+            <p>
+                <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("OstResCalc", "Home", new { ParentId = 1 })'"><div ><h2>Расчет остаточного <wbr>ресурса по<wbr> статистике<wbr> отказов <wbr>трубопроводов </h2></div></button>
+            </p>
+        </div>
+        <div>
+            <p>
+                <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("OstResShirinaCalc", "Home")'"><div><h2>Расчёт остаточного <wbr>ресурса  по минимальной вероятной <wbr> толщине стенки<wbr> труб по результатам <wbr>диагностики</h2></div></button>
+            </p>
+        </div>
+        <div>
+            <p>
+                <button class="btn btn-lg btn-block" onclick="location.href='@Url.Action("index", "Home")'"><h2>Расчет <wbr>остаточного ресурса <wbr>по характеристикам <wbr>трещиностойкости</h2></button>
+            </p>
+        </div>
     </div>
-
-
 </div>
 
 

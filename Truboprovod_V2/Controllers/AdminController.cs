@@ -17,7 +17,7 @@ namespace Truboprovod_V2.Controllers
 
 
         ApplicationDbContext db = new ApplicationDbContext();
-
+        OstResShirinaContext context = new OstResShirinaContext();
 
         [Authorize(Roles = "admin")]
         public ActionResult Administr()
@@ -29,13 +29,26 @@ namespace Truboprovod_V2.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult AdministrShirinaResult()
         {
-
-            OstResShirinaContext db = new OstResShirinaContext();
-
-            return View(db.ShirinaRes);
-
-          
+            return View(context.ShirinaRes);
         }
+
+
+
+
+        [Authorize(Roles = "admin")]
+        public string GetShirinaData()
+        {
+            return JsonConvert.SerializeObject(context.ShirinaRes.ToList());
+        }
+
+        [Authorize(Roles = "admin")]
+        public string GetData()
+        {
+
+            return JsonConvert.SerializeObject(db.Users.ToList());
+        }
+
+
 
         [Authorize(Roles = "admin")]
         [HttpPost]
@@ -58,12 +71,7 @@ namespace Truboprovod_V2.Controllers
             // действия по удалению
         }
 
-        [Authorize(Roles = "admin")]
-        public string GetData()
-        {
-           
-            return JsonConvert.SerializeObject(db.Users.ToList());
-        }
+       
        
         
     }

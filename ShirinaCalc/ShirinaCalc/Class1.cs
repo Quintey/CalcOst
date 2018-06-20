@@ -70,7 +70,13 @@ namespace ShirinaCalc
                 case "2":
                     val_k1 = k1[1];
                     break;
-                
+                case "3":
+                    val_k1 = k1[0];
+                    break;
+                case "4":
+                    val_k1 = k1[1];
+                    break;
+
             }
             double R1 = 0;
             double check = (Rh2 * m3) / (Rh1 * Sreda_double);

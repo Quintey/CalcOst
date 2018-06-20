@@ -96,3 +96,9 @@ input[type=text]#zamer{
     background-image: url('../fonts/GettyImages-586922442.jpg');
 }
 
+
+.adm-nav-pan {
+    background-color: rgb(35, 35, 35);
+    padding: 10px;
+    border-radius: 10px;
+}

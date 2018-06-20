@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "ToShirinaPdf";
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+    @model  IEnumerable<Truboprovod_V2.Models.OstResShirinaModel>
+}
+
+@foreach (Truboprovod_V2.Models.OstResShirinaModel b in Model)
+{
+    <center>  <p><h1>  Расчет#  @b.Id</h1></p></center>
+    <h2>
+        <p>Дата: @b.Date</p>
+        @*<p>@b.UserName</p>*@
+        <p>Остаточный ресурс (лет): @b.OstResult  </p>
+        <p>Марка стали: @b.Steel</p>
+        <p>Транспортируемая среда: @b.Sreda</p>
+        <p>
+            Нормативное сопротивление, равное наименьшему значению
+            временного сопротивления разрыву материала труб: @b.Rh1
+        </p>
+        <p>
+            Нормативное сопротивление, равное наименьшему значению
+            предела текучести при растяжении, сжатии и изгибе: @b.Rh2
+        </p>
+        <p>Рабочее давление: @b.P</p>
+        <p>Номинальная толщина стенки: @b.Nominal_tolshina</p>
+        <p>время эксплуатации: @b.Narabotka</p>
+        <p>Материал: @b.Material</p>
+    </h2>
+    
+
+   
+}
+
+

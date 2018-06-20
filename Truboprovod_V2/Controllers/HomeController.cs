@@ -1,5 +1,6 @@
 ﻿
 using CalcLibrary;
+using MvcRazorToPdf;
 using ShirinaCalc;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,16 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Truboprovod_V2.Models;
+using SysIO = System.IO;
+using iTextSharp.text;
+using System.Web.Hosting;
 
 namespace Truboprovod_V2.Controllers
 {
     public class HomeController : Controller
     {
+        OstResShirinaContext context = new OstResShirinaContext();
+
         public ActionResult Index()
         {
             return View();
@@ -34,8 +40,27 @@ namespace Truboprovod_V2.Controllers
         }
 
 
+        public ActionResult ToShirinaPdf()
+        {
+            
+            return View( (      context.ShirinaRes.Where( ty => ty.Id == (context.ShirinaRes.Max( n=>n.Id )))      ).ToList());
+
+            
+        }
+
+        public ActionResult ToShirinaPdfRotativa()
+        {
+
+            return new Rotativa.ActionAsPdf("ToShirinaPdf", (context.ShirinaRes.Where(ty => ty.Id == (context.ShirinaRes.Max(n => n.Id)))).ToList()) { FileName = "CalculationResult.pdf" };
+
+
+        }
+
+
+
+
         [Authorize]
-        public ActionResult OstResCalc()
+        public ActionResult OstResCalc( )
         {
             return View();
         }
@@ -92,7 +117,7 @@ namespace Truboprovod_V2.Controllers
         {
             return View();
         }
-        OstResShirinaContext context = new OstResShirinaContext();
+      
 
         [Authorize]
         [HttpPost]
@@ -104,6 +129,8 @@ namespace Truboprovod_V2.Controllers
             double Sreda_double = 0;
             double Tsr = 0;
             int count = 0;
+            string _material="";
+            string _sreda = "";
 
             if (DynamicExtraField != null)
             {
@@ -142,6 +169,42 @@ namespace Truboprovod_V2.Controllers
                 ViewBag.Shirinaresult = Math.Round(ShirinaCalc.Class1.OstResurs(DynamicExtraField, Sreda_double, Material, Nominal_tolshina,
                                                                                           P, Diametr, Rh1, Rh2, Narabotka, count, Tsr), 2);
 
+
+                switch (Material)
+                {
+                    case "1":
+                        _material = "Бесшовные трубы из углеродистой стали";
+                        break;
+
+                    case "2":
+                        _material = "Сварные трубы из углеродистой стали";
+                        break;
+                    case "3":
+                        _material = "Сварные трубы из низколегированной ненормализованной стали";
+                        break;
+                    case "4":
+                        _material = "Сварных трубы из нормализованной низколегированной стали";
+                        break;
+
+                }
+
+
+                switch (Sreda)
+                {
+                    case "I":
+                        _sreda = "Токсичные, горючие, взрывоопасные и сжиженные газы";
+                        break;
+
+                    case "II":
+                        _sreda = "инертные газы или токсичные, горючие, взрывоопасные жидкости";
+                        break;
+
+                    case "III":
+                        _sreda = "инертные жидкости";
+                        break;
+
+                }
+
                 double Result = ViewBag.Shirinaresult;
 
                 var claimsIdentity = User.Identity as ClaimsIdentity;
@@ -161,8 +224,8 @@ namespace Truboprovod_V2.Controllers
                     {
                         UserName = User.Identity.Name,
                         Date = DateTime.Now.ToString(),
-                        Sreda = (Sreda_double).ToString(),
-                        Material = Material,
+                        Sreda = _sreda,
+                        Material = _material,
                         Nominal_tolshina = Nominal_tolshina,
                         P = P,
                         Diametr = Diametr,
